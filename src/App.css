@@ -1,0 +1,325 @@
+.app-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  z-index: 1;
+  background: transparent;
+}
+
+/* Dock / Sidebar móvil */
+.sidebar {
+  width: 300px;
+  height: calc(100vh - 40px);
+  margin: 20px;
+  padding: 24px 16px 24px 24px;
+  /* Menos margen derecho para hacer espacio al scrollbar */
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  z-index: 10;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+/* Scrollbar personalizado para Sidebar */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+h1.app-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.control-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.master-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--bg-deep);
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+  box-shadow: var(--shadow-glow-cyan);
+  transition: all 0.3s ease;
+}
+
+.master-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow-active);
+}
+
+.master-btn.paused {
+  background: var(--panel-bg);
+  color: var(--text-main);
+  border: 1px solid var(--panel-border);
+  box-shadow: none;
+}
+
+.master-btn.paused:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.presets-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.preset-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid transparent;
+  padding: 12px 16px;
+  border-radius: 8px;
+  text-align: left;
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+.preset-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--panel-border);
+}
+
+.volume-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  outline: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--text-main);
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  transition: transform 0.1s;
+}
+
+.volume-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+/* Pantalla de Carga */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(5, 5, 5, 0.8);
+  backdrop-filter: blur(8px);
+  z-index: 100;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* Presets Personalizados */
+.save-preset-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.preset-input {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--panel-border);
+  color: var(--text-main);
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-family: var(--font-main);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.preset-input:focus {
+  border-color: var(--accent-cyan);
+}
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: all 0.2s;
+}
+
+.icon-btn.save-btn {
+  color: var(--accent-cyan);
+}
+
+.icon-btn.save-btn:hover {
+  background: rgba(0, 240, 255, 0.15);
+}
+
+.custom-preset-item {
+  display: flex;
+  gap: 4px;
+}
+
+.custom-preset-item .preset-btn {
+  flex: 1;
+}
+
+.icon-btn.delete-btn {
+  color: var(--text-muted);
+}
+
+.icon-btn.delete-btn:hover {
+  color: var(--accent-magenta);
+  background: rgba(255, 0, 60, 0.1);
+}
+
+/* Modo Zen */
+.app-container.zen-mode .sidebar {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-20px);
+  /* Colapsar espacio lateral para centrar el radar */
+  width: 0;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+  overflow: hidden;
+}
+
+.sidebar {
+  transition: all 0.5s ease;
+}
+
+.zen-toggle-btn {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-muted);
+  padding: 10px 20px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  z-index: 100;
+  transition: all 0.3s ease;
+  font-family: var(--font-main);
+  font-weight: 500;
+}
+
+.zen-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--text-main);
+  transform: scale(1.05);
+}
+
+/* Ocultar interfaz central durante Modo Zen */
+.app-container.zen-mode .board-container .listener-circle {
+  opacity: 0.1;
+  border-style: dotted;
+}
+
+.app-container.zen-mode .board-container .center-dot {
+  opacity: 0;
+}
+
+/* --- Ajustes Móviles --- */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+    overflow-y: hidden;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    max-height: 40vh;
+    margin: 0;
+    border-radius: 0 0 20px 20px;
+    padding: 16px;
+    gap: 16px;
+    pointer-events: none;
+    /* Dejar que los toques traspasen el fondo transparente */
+  }
+
+  .sidebar .control-section {
+    pointer-events: auto;
+    /* Reactivar toques reales en los botones */
+  }
+
+  h1.app-title {
+    font-size: 1.5rem;
+  }
+
+  .main-content {
+    flex: 1;
+    min-height: 60vh;
+    padding: 10px;
+  }
+
+  .app-container.zen-mode .sidebar {
+    transform: translateY(-100%);
+    max-height: 0;
+    padding: 0;
+  }
+
+  .zen-toggle-btn {
+    bottom: 20px;
+    right: 20px;
+    font-size: 0.8rem;
+    padding: 8px 16px;
+  }
+}
