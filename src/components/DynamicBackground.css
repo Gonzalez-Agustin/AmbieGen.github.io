@@ -79,17 +79,17 @@
 
 .bg-piano {
     background-color: #1a1510;
-    background-image: linear-gradient(rgba(20, 15, 10, 0.5), rgba(20, 15, 10, 0.9)), url('/images/bg_piano.png');
+    background-image: linear-gradient(rgba(20, 15, 10, 0.5), rgba(20, 15, 10, 0.9)), url('../../assets/images/bg_piano.png');
 }
 
 .bg-trueno {
     background-color: #0d0a15;
-    background-image: linear-gradient(rgba(10, 8, 20, 0.5), rgba(10, 8, 20, 0.9)), url('/images/bg_trueno.png');
+    background-image: linear-gradient(rgba(10, 8, 20, 0.5), rgba(10, 8, 20, 0.9)), url('../../assets/images/bg_trueno.png');
 }
 
 .bg-viento {
     background-color: #0b151a;
-    background-image: linear-gradient(rgba(8, 15, 20, 0.5), rgba(8, 15, 20, 0.9)), url('/images/bg_viento.png');
+    background-image: linear-gradient(rgba(8, 15, 20, 0.5), rgba(8, 15, 20, 0.9)), url('../../assets/images/bg_viento.png');
 }
 
 /* Efecto Lluvia */

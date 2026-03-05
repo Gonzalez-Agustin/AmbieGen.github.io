@@ -32,7 +32,7 @@ export default function DynamicBackground({ activeNodes }) {
                 <div className="rain-container">
                     <video
                         className="rain-video-overlay"
-                        src="/rain.mp4"
+                        src={`${import.meta.env.BASE_URL}rain.mp4`}
                         autoPlay
                         loop
                         muted
